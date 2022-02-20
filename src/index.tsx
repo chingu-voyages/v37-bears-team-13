@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import WrongRoutePage from './pages/WrongRoutePage';
 import reportWebVitals from './reportWebVitals';
 
@@ -11,6 +13,8 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<WrongRoutePage />} />
       </Routes>
     </BrowserRouter>
