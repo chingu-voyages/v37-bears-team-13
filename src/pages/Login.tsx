@@ -18,10 +18,7 @@ const Login = (): JSX.Element =>{
             password: { value: string };
           };
 
-        //if(target correct ) { redirect to logged in home page} 
-        // else  {
-            //handleIncorrectPassword()
-        //}
+        // To Do: Handle incorrect password  
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,10 +71,7 @@ const Login = (): JSX.Element =>{
                 <input type="submit"  />
             </form>
             <NavBar />
-            {
-                incorrectPassword ? <div> Incorrect Username or Password!</div>  :
-                <div></div>
-            }
+            {incorrectPassword && <div> Incorrect Username or PassWord</div>}
         </div>
     )
 }
