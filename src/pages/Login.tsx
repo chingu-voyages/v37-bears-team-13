@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import NavBar from "../components/NavBar";
     
 const Login = (): JSX.Element =>{
 
@@ -44,7 +44,10 @@ const Login = (): JSX.Element =>{
 
     return(
         <div>
-            <h2> Login </h2>
+            <header>
+                <h1>Stock Race</h1>
+                <h2> Login </h2>
+            </header>
             <form onSubmit={handleSubmit} >
                 <label>
                 Username:
@@ -70,6 +73,7 @@ const Login = (): JSX.Element =>{
                 <br/>
                 <input type="submit"  />
             </form>
+            <NavBar />
             {
                 incorrectPassword ? <div> Incorrect Username or Password!</div>  :
                 <div></div>
