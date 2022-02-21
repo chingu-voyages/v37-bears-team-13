@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import { data } from "../../temp/data";
+import Table from "../../components/StockListing/Table";
 import "./styles.module.css";
 
-type Stock = {
+export type Stock = {
   currency: string;
   description: string;
   displaySymbol: string;
@@ -16,36 +16,25 @@ type Stock = {
   type: string;
 };
 
+//Todo: Add proper pagination
 const StockListing = (): JSX.Element => {
-  // const [data, setData] = useState<Stock[] | []>(data);
+  const [data, setData] = useState<Stock[] | []>([]);
+  const start: number = 0;
+  const end: number = 10;
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const rawData = await fetch(process.env.REACT_APP_STOCK_URL!);
-  //     const data = await rawData.json();
-  //     setData(data);
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const rawData = await fetch(process.env.REACT_APP_STOCK_URL!);
+      const data = await rawData.json();
+      setData(data);
+    };
+    fetchData();
+  }, []);
 
-  //Todo: use data from API
   return (
     <>
       <h2>Stock Listing</h2>
-      <table>
-        <tr>
-          {Object.keys(data[0]).map((key) => (
-            <th>{key}</th>
-          ))}
-        </tr>
-        {data.map((item) => (
-          <tr>
-            {Object.values(item).map((value) => (
-              <td>{value}</td>
-            ))}
-          </tr>
-        ))}
-      </table>
+      {!data.length ? <h2>Loading...</h2> : Table(data, start, end)}
     </>
   );
 };
