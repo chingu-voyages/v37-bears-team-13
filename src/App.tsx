@@ -1,16 +1,14 @@
-import React from 'react';
-import Home from './pages/Home';
-import NavBar from './components/NavBar';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import Home from "./pages/Home";
+import NavBar from "./components/NavBar";
+import StockListing from "./pages/StockListing/StockListing";
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>Stock Race</h1>
-        <NavBar />
-        <Home />
-      </header>
+      <StockListing />
     </div>
   );
 }
