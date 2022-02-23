@@ -1,4 +1,4 @@
 #!/bin/sh
-chmod u+x "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/_/husky.sh"
 
 npx pretty-quick --staged ng lint ng test
