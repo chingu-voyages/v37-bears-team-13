@@ -25,8 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install client/.husky"
-
+    "prepare": "husky install client/.husky",
+    "lint": "yarn eslint",
+    "prettier": "yarn pretty-quick"
   },
   "eslintConfig": {
     "extends": [
