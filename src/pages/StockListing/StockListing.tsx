@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import Table from "../../components/StockListing/Table";
-import "./styles.module.css";
+import Table from '../../components/StockListing/Table';
+import './styles.module.css';
 
 export type Stock = {
   currency: string;
@@ -19,8 +19,7 @@ export type Stock = {
 //Todo: Add proper pagination
 const StockListing = (): JSX.Element => {
   const [data, setData] = useState<Stock[] | []>([]);
-  const start: number = 0;
-  const end: number = 10;
+  const howManyToDisplay: number = 10;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +33,7 @@ const StockListing = (): JSX.Element => {
   return (
     <>
       <h2>Stock Listing</h2>
-      {!data.length ? <h2>Loading...</h2> : Table(data, start, end)}
+      {!data.length ? <h2>Loading...</h2> : Table(data, howManyToDisplay)}
     </>
   );
 };
