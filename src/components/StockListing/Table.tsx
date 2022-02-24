@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { Stock } from "../../pages/StockListing/StockListing";
+import { Stock } from '../../pages/StockListing/StockListing';
 
-export default function Table(data: Stock[], start: number, amount: number) {
+export default function Table(data: Stock[], howManyToDisplay: number) {
+  const startAt: number = 0;
   return (
     <table>
       <tr>
@@ -12,7 +13,7 @@ export default function Table(data: Stock[], start: number, amount: number) {
       </tr>
       {React.Children.toArray(
         data
-          .slice(start, amount)
+          .slice(startAt, howManyToDisplay)
           .map((item) => (
             <tr>
               {React.Children.toArray(
