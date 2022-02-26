@@ -17,5 +17,5 @@
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off"
   },
-  "react/jsx-key": [false, { "checkFragmentShorthand": true }]
+  "react/jsx-key": [0, { "checkFragmentShorthand": true }]
 }
