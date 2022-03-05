@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import Signup from '../pages/Signup';
 
-describe('Login Page', () => {
+describe('Signup Page', () => {
   const SignupComponent = (
     <BrowserRouter>
       <Routes>
