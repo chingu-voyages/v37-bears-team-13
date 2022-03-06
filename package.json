@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll",
     "eject": "react-scripts eject",
     "prepare": "husky install client/.husky",
     "lint": "yarn eslint",
@@ -45,6 +45,7 @@
       "pre-commit": "npx pretty-quick --staged ng lint ng test",
       "pre-push": "ng build --aot true"
       }},
+      
   "browserslist": {
     "production": [
       ">0.2%",
