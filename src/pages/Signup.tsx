@@ -1,28 +1,130 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import FormNotification from '../components/FormNotification';
 import NavBar from '../components/NavBar';
+import { validateSigniupFields } from '../util/validation';
+
+interface FormAlertType {
+  status: FormStatus;
+  title: string;
+  message: string;
+}
+
 const initialValues = {
   username: '',
   email: '',
   password: '',
-  confirm: '',
+  confirm: ''
+};
+
+const initialFormState: FormAlertType = {
+  status: 'pending',
+  title: '',
+  message: ''
 };
 
 const Signup = (): JSX.Element => {
+  // Form values.
   const [values, setValues] = useState(initialValues);
+
+  // Form state for displaying notification on success, error,
+  // or pending.
+  const [formState, setFormState] = useState(initialFormState);
+  const [show, setShow] = useState(false);
+
+  // Navigate somewhere on signup success.
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues({
       ...values,
-      [name]: value,
+      [name]: value
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // Show/reset form.
+  useEffect(() => {
+    if (!show) {
+      setShow(true);
+    } else {
+      const timer = setTimeout(() => {
+        setFormState(initialFormState);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [formState.status]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // If fields aren't okay, show an error and don't make the
+    // request.
+    const validationErrors = validateSigniupFields(values);
+    if (validationErrors) {
+      setShow(true);
+      setFormState({
+        status: 'error',
+        title: 'Error',
+        message: validationErrors
+      });
+      return;
+    }
+
+    // Fields are okay, so proceed.
+    const { username, email, password } = values;
+
+    // Make POST request to backend.
+    try {
+      setFormState({
+        status: 'pending',
+        title: 'Loading',
+        message: 'Signing up...'
+      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        }
+      );
+
+      if (response.ok) {
+        // Show success and push to home page.
+        setFormState({
+          status: 'success',
+          title: 'Success!',
+          message:
+            'Welcome to Stock Race! You will be re-routed to the home page in just a moment.'
+        });
+
+        // Re-direct user to homepage.
+        const timer = setTimeout(() => {
+          navigate('/');
+        }, 3000);
+        return () => clearTimeout(timer);
+      } else {
+        // TODO: Consider Extracting error message from backend.
+        setFormState({
+          status: 'error',
+          title: 'Error',
+          message: 'Something went wrong'
+        });
+      }
+    } catch (err) {
+      // Show error.
+      setFormState({
+        status: 'error',
+        title: 'Error',
+        message: 'Something went wrong'
+      });
+    }
   };
 
   const { username, email, password, confirm } = values;
+  const { status, title, message } = formState;
 
   return (
     <>
@@ -77,6 +179,9 @@ const Signup = (): JSX.Element => {
           <br />
           <button>Sign Up</button>
         </form>
+        {show && (
+          <FormNotification status={status} message={message} title={title} />
+        )}
       </div>
     </>
   );
