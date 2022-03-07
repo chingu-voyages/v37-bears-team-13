@@ -67,10 +67,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 <table align="center">
   <tr>
     <td align="center"><a href="https://chirila.dev/"><img src="https://avatars.githubusercontent.com/u/28935544?v=4" width="100px;" alt=""/><br /><sub><b>Regina M</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=rmcguire6" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Rae-Kwon"><img src="https://avatars.githubusercontent.com/u/24848125?v=4" width="100px;" alt=""/><br /><sub><b>Marylene Sawyer</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=Rae-Kwon" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/JessieFrance"><img src="https://avatars.githubusercontent.com/u/64499366?v=4" width="100px;" alt=""/><br /><sub><b>Thomas Gilmore</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=JessieFrance" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/DanielFleace1"><img src="https://avatars.githubusercontent.com/u/75345541?v=4" width="100px;" alt=""/><br /><sub><b>Monjur-E-Khuda</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=DanielFleace1" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ArturoDucasse"><img src="https://avatars.githubusercontent.com/u/66644638?v=4" width="100px;" alt=""/><br /><sub><b>Monjur-E-Khuda</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=ArturoDucasse" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Rae-Kwon"><img src="https://avatars.githubusercontent.com/u/24848125?v=4" width="100px;" alt=""/><br /><sub><b>Rae Kwon</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=Rae-Kwon" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/JessieFrance"><img src="https://avatars.githubusercontent.com/u/64499366?v=4" width="100px;" alt=""/><br /><sub><b>Jessie France</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=JessieFrance" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/DanielFleace1"><img src="https://avatars.githubusercontent.com/u/75345541?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Flence</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=DanielFleace1" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ArturoDucasse"><img src="https://avatars.githubusercontent.com/u/66644638?v=4" width="100px;" alt=""/><br /><sub><b>Arturo Ducasse</b></sub></a><br /><a href="https://github.com/chingu-voyages/v37-bears-team-13/commits?author=ArturoDucasse" title="Code">💻</a></td>
   </tr>
 </table>
 
