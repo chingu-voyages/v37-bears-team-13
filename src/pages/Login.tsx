@@ -60,7 +60,7 @@ const Login = (): JSX.Element => {
         <label>
           Password:
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="123pass456"
             value={password}
