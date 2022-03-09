@@ -23,7 +23,7 @@ const StockListing = (): JSX.Element => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const rawData = await fetch(process.env.REACT_APP_STOCK_URL!);
+      const rawData = await fetch(process.env.REACT_APP_STOCK_SYMBOL!);
       const data = await rawData.json();
       setData(data);
     };
