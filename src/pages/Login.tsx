@@ -50,6 +50,7 @@ const Login = (): JSX.Element => {
         title: 'Loading',
         message: 'Attempting to Log in...'
       });
+
       if(res.ok){
         setFormState({
           status: 'success',
@@ -61,6 +62,7 @@ const Login = (): JSX.Element => {
           navigate('/');
         }, 3000);
         return () => clearTimeout(timer);
+        // const user = await res.json() TO DO: set user. 
       }
       else{
         setFormState({
@@ -131,7 +133,7 @@ const Login = (): JSX.Element => {
           />
         </label>
         <br />
-        <input type="submit" />
+        <button type="submit"> Login</button>
       </form>
       {show && (<FormNotification status={status} message={message} title={title} />)}
     </div>
