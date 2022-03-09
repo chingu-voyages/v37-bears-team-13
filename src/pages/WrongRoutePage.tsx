@@ -3,13 +3,9 @@ import { Link } from 'react-router-dom';
 const WrongRoutePage = (): JSX.Element => {
   return (
     <>
-      <div className="App">
-        <header>
-          <h1>Stock Race</h1>
-        </header>
+      <div className="container">
         <main>
           <p>Nothing here!</p>
-          <Link to="/">Back to Home</Link>
         </main>
       </div>
     </>
