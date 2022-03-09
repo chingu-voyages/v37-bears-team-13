@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NavBar from '../components/NavBar';
 
 const Login = (): JSX.Element => {
   const initialValues = {
@@ -40,11 +39,8 @@ const Login = (): JSX.Element => {
   const { username, password } = values;
 
   return (
-    <div>
-      <header>
-        <h1>Stock Race</h1>
-        <h2> Login </h2>
-      </header>
+    <div className="container">
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
@@ -60,7 +56,7 @@ const Login = (): JSX.Element => {
         <label>
           Password:
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="123pass456"
             value={password}
@@ -70,7 +66,7 @@ const Login = (): JSX.Element => {
         <br />
         <input type="submit" />
       </form>
-      <NavBar />
+
       {incorrectPassword && <div> Incorrect Username or PassWord</div>}
     </div>
   );

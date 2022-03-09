@@ -128,12 +128,8 @@ const Signup = (): JSX.Element => {
 
   return (
     <>
-      <div className="App">
-        <header>
-          <h1>Stock Race</h1>
-          <NavBar />
-          <h2>Sign Up</h2>
-        </header>
+      <div className="container">
+        <h2>Sign Up</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           <label>
             Username:

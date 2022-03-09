@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
+import Header from './components/Header/Header';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import WrongRoutePage from './pages/WrongRoutePage';
@@ -12,6 +13,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />

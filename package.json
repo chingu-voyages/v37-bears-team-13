@@ -2,7 +2,7 @@
   "name": "stock-race",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://chingu-voyages/v37-bears-team-13.github.io/stock-race",
+  "homepage": "https://chingu-voyages/v37-bears-team-13.github.io/v37-bears-team-13",
   "dependencies": {
     "@babel/plugin-syntax-flow": "^7.14.5",
     "@testing-library/dom": "^8.11.3",
@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll",
     "eject": "react-scripts eject",
     "prepare": "husky install client/.husky",
     "lint": "yarn eslint",
@@ -44,7 +44,8 @@
     "hooks": {
       "pre-commit": "npx pretty-quick --staged ng lint ng test",
       "pre-push": "ng build --aot true"
-      }},
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
