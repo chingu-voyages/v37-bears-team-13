@@ -16,6 +16,8 @@ export type Stock = {
   type: string;
 };
 
+const finnhubURL = 'https://finnhub.io/api/v1'
+
 //Todo: Add proper pagination
 const StockListing = (): JSX.Element => {
   const [data, setData] = useState<Stock[] | []>([]);
@@ -23,7 +25,7 @@ const StockListing = (): JSX.Element => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const rawData = await fetch(process.env.REACT_APP_STOCK_SYMBOL!);
+      const rawData = await fetch(`${finnhubURL}/stock/symbol?exchange=US${process.env.REACT_APP_STOCK_TOKEN}`!);
       const data = await rawData.json();
       setData(data);
     };
