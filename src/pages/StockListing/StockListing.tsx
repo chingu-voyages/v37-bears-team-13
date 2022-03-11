@@ -25,7 +25,7 @@ const StockListing = (): JSX.Element => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const rawData = await fetch(`${finnhubURL}/stock/symbol?exchange=US${process.env.REACT_APP_STOCK_TOKEN}`!);
+      const rawData = await fetch(`${finnhubURL}/stock/symbol?exchange=US&token=${process.env.REACT_APP_STOCK_KEY}`!);
       const data = await rawData.json();
       setData(data);
     };
