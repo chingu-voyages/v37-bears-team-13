@@ -2,7 +2,7 @@
   "name": "stock-race",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rae-kwon.github.io/v37-bears-team-13/",
+  "homepage": "https://chingu-voyages/v37-bears-team-13.github.io/v37-bears-team-13",
   "dependencies": {
     "@babel/plugin-syntax-flow": "^7.14.5",
     "@testing-library/dom": "^8.11.3",
