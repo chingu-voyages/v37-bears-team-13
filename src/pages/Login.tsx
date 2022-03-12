@@ -69,7 +69,7 @@ const Login = (): JSX.Element => {
         setFormState({
           status: 'error',
           title: 'Error',
-          message: 'Incorrect Username or passowrd!'
+          message: 'Incorrect Username or password!'
         });
       }
     } catch (err) {
