@@ -3,9 +3,10 @@ import App from '../App';
 import Header from '../components/Header/Header';
 import AddStock from '../pages/AddStock';
 import Login from '../pages/Login';
+import ProtectedRoute from 'pages/ProtectedRoute';
 import Signup from '../pages/Signup';
 import WrongRoutePage from '../pages/WrongRoutePage';
-import { useState } from 'react';
+
 const AppRouter = () => {
   return (
     <HashRouter>
@@ -15,7 +16,14 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<WrongRoutePage />} />
-        <Route path="/addStock" element={<AddStock />} />
+        <Route
+          path="/addStock"
+          element={
+            <ProtectedRoute user={'authorizedUser'}>
+              <AddStock />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </HashRouter>
   );
