@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormNotification from '../components/FormNotification';
-import NavBar from '../components/NavBar';
-import { validateSigniupFields } from '../util/validation';
+import { validateSignupFields } from '../util/validation';
 
 interface FormAlertType {
   status: FormStatus;
@@ -60,7 +59,7 @@ const Signup = (): JSX.Element => {
 
     // If fields aren't okay, show an error and don't make the
     // request.
-    const validationErrors = validateSigniupFields(values);
+    const validationErrors = validateSignupFields(values);
     if (validationErrors) {
       setShow(true);
       setFormState({
