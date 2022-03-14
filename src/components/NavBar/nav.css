@@ -1,0 +1,17 @@
+.nav {
+  padding: 0.25em;
+}
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+.nav-link:visited {
+  color: purple;
+}
+.nav-link:hover {
+  color: green;
+}
+.nav-link:active {
+  color: red;
+}

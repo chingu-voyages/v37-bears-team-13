@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 
 export interface Props {
   user: string;
-  redirectPath: string;
+  redirectPath?: string;
   children: JSX.Element;
 }
 const ProtectedRoute = ({
