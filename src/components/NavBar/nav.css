@@ -1,17 +1,12 @@
 .nav {
-  padding: 0.25em;
+  margin: 0 auto;
+  background: black;
+  padding: 10px;
+  border-radius: 7px;
+  width: fit-content;
 }
 .nav-link {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 700;
-}
-.nav-link:visited {
-  color: purple;
-}
-.nav-link:hover {
-  color: green;
-}
-.nav-link:active {
-  color: red;
 }
