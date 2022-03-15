@@ -40,7 +40,8 @@ const StockListing = (): JSX.Element => {
           fetchUserData();
           return 
         };
-      } 
+      }
+      fetchUserData(); 
     } 
     // if no logged on user OR fetch does not respond with ok == true 
     const fetchExampleData = async () => {
