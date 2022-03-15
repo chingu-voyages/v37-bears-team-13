@@ -54,9 +54,6 @@ const Login = (): JSX.Element => {
       if(res.ok){
         // save user to local storage 
         const user = await res.json()
-        // Save User in Local Storage
-        // console.log('userjson',user)
-        // console.log('type of user', typeof(user))
         window.localStorage.setItem('loggedOnUser',JSON.stringify(user))
 
         setFormState({
