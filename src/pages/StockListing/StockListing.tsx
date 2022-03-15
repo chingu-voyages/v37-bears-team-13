@@ -24,12 +24,31 @@ const StockListing = (): JSX.Element => {
   const howManyToDisplay: number = 10;
 
   useEffect(() => {
-    const fetchData = async () => {
+    // check for logged on User
+    const loggedUser = window.localStorage.getItem('loggedOnUser')
+    if(loggedUser){
+      const fetchUserData = async () =>{
+        const rawData = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/stocks`,
+        {
+          method: "GET",
+          credentials: 'include',
+        })
+        
+        if(rawData.ok){
+          const data = await rawData.json()
+          setData(data.stocks)
+          fetchUserData();
+          return 
+        };
+      } 
+    } 
+    // if no logged on user OR fetch does not respond with ok == true 
+    const fetchExampleData = async () => {
       const rawData = await fetch(`${finnhubURL}/stock/symbol?exchange=US&token=${process.env.REACT_APP_STOCK_KEY}`!);
       const data = await rawData.json();
       setData(data);
     };
-    fetchData();
+    fetchExampleData();
   }, []);
 
   return (

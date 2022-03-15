@@ -52,6 +52,13 @@ const Login = (): JSX.Element => {
       });
 
       if(res.ok){
+        // save user to local storage 
+        const user = await res.json()
+        // Save User in Local Storage
+        // console.log('userjson',user)
+        // console.log('type of user', typeof(user))
+        window.localStorage.setItem('loggedOnUser',JSON.stringify(user))
+
         setFormState({
           status: 'success',
           title: 'Success!',
@@ -62,7 +69,7 @@ const Login = (): JSX.Element => {
           navigate('/');
         }, 3000);
         return () => clearTimeout(timer);
-        // const user = await res.json() TO DO: set user. 
+
       }
       else{
         setFormState({
@@ -94,7 +101,7 @@ const Login = (): JSX.Element => {
       togglePassword: togglePassword === 'password' ? 'text' : 'password'
     })
   };
-  const { username, password,togglePassword,incorrectPassword } = values;
+  const { username, password,togglePassword } = values;
   const { status, title, message } = formState;
 
   return (
