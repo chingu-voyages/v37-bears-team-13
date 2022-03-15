@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import StockViewer from '../components/StockViewer';
 import Listing from '../pages/StockListing/StockListing';
 const Home = (): JSX.Element => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
+  useEffect(() => {
+    const loggedUser = window.localStorage.getItem('loggedOnUser')
+    if(loggedUser){
+      setIsLoggedIn(true)
+    }
+  },[])
+  
   return (
     <div>
       <StockViewer
