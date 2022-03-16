@@ -4,7 +4,7 @@ import './nav.css';
 const NavBar = (): JSX.Element => {
   return (
     <>
-      <nav className="nav container">
+      <nav className="nav">
         <NavLink className="nav-link" to="/">
           Home
         </NavLink>{' '}

@@ -6,6 +6,8 @@ body {
 }
 .container {
   text-align: center;
+  display: grid;
+  padding-inline: 1rem;
 }
 
 form {
