@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormNotification from '../components/FormNotification';
 import { validateSignupFields } from '../util/validation';
+import { useAppCtx } from 'context';
 
 interface FormAlertType {
   status: FormStatus;
@@ -30,6 +31,9 @@ const Signup = (): JSX.Element => {
   // or pending.
   const [formState, setFormState] = useState(initialFormState);
   const [show, setShow] = useState(false);
+
+  // Get context.
+  const { setLoggedIn } = useAppCtx();
 
   // Navigate somewhere on signup success.
   const navigate = useNavigate();
@@ -101,6 +105,7 @@ const Signup = (): JSX.Element => {
 
         // Re-direct user to homepage.
         const timer = setTimeout(() => {
+          setLoggedIn(true);
           navigate('/');
         }, 3000);
         return () => clearTimeout(timer);
