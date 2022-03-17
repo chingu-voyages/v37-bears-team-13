@@ -8,6 +8,8 @@ import Signup from '../pages/Signup';
 import WrongRoutePage from '../pages/WrongRoutePage';
 
 const AppRouter = () => {
+  const loggedIn = true;
+
   return (
     <HashRouter>
       <Header />
@@ -19,7 +21,7 @@ const AppRouter = () => {
         <Route
           path="/addStock"
           element={
-            <ProtectedRoute user={'authorizedUser'}>
+            <ProtectedRoute loggedIn={loggedIn}>
               <AddStock />
             </ProtectedRoute>
           }
