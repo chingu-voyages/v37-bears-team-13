@@ -4,3 +4,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.container {
+  text-align: center;
+  display: grid;
+  padding-inline: 1rem;
+}
+
+form {
+  margin: 0 auto;
+  padding: 1em;
+  border: black solid 2px;
+  border-radius: 7px;
+  width: fit-content;
+}
+label {
+  font-weight: 700;
+}
+input {
+  margin: 0.5em;
+}

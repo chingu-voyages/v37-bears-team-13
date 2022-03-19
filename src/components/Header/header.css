@@ -1,0 +1,39 @@
+h1 {
+  margin-left: 0.5rem;
+  font-style: italic;
+  font-size: 1.4rem;
+  letter-spacing: 0.15rem;
+  color: white;
+  text-shadow: -7px 0px 8px rgba(255, 255, 255, 0.7),
+    -8px 0px 7px rgba(255, 255, 255, 0.5),
+    -13px 0px 8px rgba(255, 255, 255, 0.33);
+}
+.header {
+  background-size: cover;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0),
+    rgba(255, 255, 0)
+  );
+  padding: 0;
+}
+
+.header-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+}
+.car {
+  display: block;
+  max-width: 25%;
+}
+@media (min-width: 35rem) {
+  .car {
+    max-width: 20%;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
