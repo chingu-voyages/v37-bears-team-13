@@ -1,16 +1,16 @@
 import { Navigate } from 'react-router-dom';
 
 export interface Props {
-  user: string;
+  loggedIn: boolean;
   redirectPath?: string;
   children: JSX.Element;
 }
 const ProtectedRoute = ({
-  user,
-  redirectPath = '/',
+  loggedIn,
+  redirectPath = '/Login',
   children
 }: Props): JSX.Element => {
-  if (!user) {
+  if (!loggedIn) {
     return <Navigate to={redirectPath} replace />;
   }
   return children;

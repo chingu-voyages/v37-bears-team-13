@@ -1,25 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddFavoriteStock = (): JSX.Element => {
-  const [stockSymbol, setStockSymbol] = useState('');
-  const [stocks, setStocks] = useState([]);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const stockSymbol = e.target.value;
-    setStockSymbol(stockSymbol);
-  };
-  const addStockSymbol = (symbol: string) => {};
+  const [stockSymbol, setStockSymbol] = useState<string>('');
+  const [stocks, setStocks] = useState<string[]>([]);
+  const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const target = e.target as typeof e.target & {
-      stockSymbol: { value: string };
-    };
-    //@ts-ignore
-    setStocks((previousState) => {
-      return [...previousState, stockSymbol];
-    });
+    setStocks([...stocks, stockSymbol]);
     setStockSymbol('');
+    navigate('/');
   };
+
   return (
     <div className="container">
       <h2>Add A Stock</h2>
@@ -31,16 +23,12 @@ const AddFavoriteStock = (): JSX.Element => {
             name="stockSymbol"
             placeholder="Enter a stock symbol"
             value={stockSymbol}
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => setStockSymbol(e.target.value)}
           />
         </label>
         <br />
         <input type="submit" />
       </form>
-      {/* for debugging until the backend is hooked up 
-      {stocks.map((stock) => (
-        <p>{stock}</p>
-      ))} */}
     </div>
   );
 };
