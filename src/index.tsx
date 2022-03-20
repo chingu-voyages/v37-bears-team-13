@@ -1,26 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Routes, Route } from 'react-router-dom';
 
+import AppRouter from './routers/AppRouter';
 import './index.css';
-import App from './App';
-import Header from './components/Header/Header';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import WrongRoutePage from './pages/WrongRoutePage';
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="*" element={<WrongRoutePage />} />
-      </Routes>
-    </HashRouter>
+    <AppRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );

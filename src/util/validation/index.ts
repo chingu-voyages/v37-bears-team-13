@@ -14,7 +14,7 @@
  *
  *
  */
-export const validateSigniupFields = ({
+export const validateSignupFields = ({
   username,
   email,
   password,
