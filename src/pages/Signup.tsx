@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormNotification from '../components/FormNotification';
-import NavBar from '../components/NavBar';
-import { validateSigniupFields } from '../util/validation';
+import { validateSignupFields } from '../util/validation';
+import { useAppCtx } from 'context';
 
 interface FormAlertType {
   status: FormStatus;
@@ -32,6 +32,9 @@ const Signup = (): JSX.Element => {
   const [formState, setFormState] = useState(initialFormState);
   const [show, setShow] = useState(false);
 
+  // Get context.
+  const { setLoggedIn } = useAppCtx();
+
   // Navigate somewhere on signup success.
   const navigate = useNavigate();
 
@@ -60,7 +63,7 @@ const Signup = (): JSX.Element => {
 
     // If fields aren't okay, show an error and don't make the
     // request.
-    const validationErrors = validateSigniupFields(values);
+    const validationErrors = validateSignupFields(values);
     if (validationErrors) {
       setShow(true);
       setFormState({
@@ -102,6 +105,7 @@ const Signup = (): JSX.Element => {
 
         // Re-direct user to homepage.
         const timer = setTimeout(() => {
+          setLoggedIn(true);
           navigate('/');
         }, 3000);
         return () => clearTimeout(timer);

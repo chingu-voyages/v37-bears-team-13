@@ -1,6 +1,7 @@
-import React, { useState,useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FormNotification from '../components/FormNotification';
+import { useAppCtx } from 'context';
 
 const Login = (): JSX.Element => {
   // type interface
@@ -8,13 +9,13 @@ const Login = (): JSX.Element => {
     status: FormStatus;
     title: string;
     message: string;
-  }  
-  // State & inital values 
+  }
+  // State & inital values
   const initialValues = {
     username: '',
     password: '',
     togglePassword: 'password',
-    incorrectPassword: false,
+    incorrectPassword: false
   };
   const initialFormState: FormAlertType = {
     status: 'pending',
@@ -24,38 +25,41 @@ const Login = (): JSX.Element => {
   const [values, setValues] = useState(initialValues);
   const [formState, setFormState] = useState(initialFormState);
   const [show, setShow] = useState(false);
+
+  // Get context.
+  const { setLoggedIn } = useAppCtx();
+
   // Navigate on sign up sucess
   const navigate = useNavigate();
   // show & reset form
   useEffect(() => {
     if (!show) return setShow(true);
     const timer = setTimeout(() => {
-        setFormState(initialFormState);
-      }, 3000);
-      return () => clearTimeout(timer);
-  },[formState.status]);
-  // Handler Functions 
+      setFormState(initialFormState);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [formState.status]);
+  // Handler Functions
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try{
-      const res = await fetch (`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`,
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      })
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        }
+      );
       setFormState({
         status: 'pending',
         title: 'Loading',
         message: 'Attempting to Log in...'
       });
 
-      if(res.ok){
-        // save user to local storage 
-        const user = await res.json()
-        window.localStorage.setItem('loggedOnUser',JSON.stringify(user))
-
+      if (res.ok) {
+        // Set Form state.
         setFormState({
           status: 'success',
           title: 'Success!',
@@ -63,27 +67,26 @@ const Login = (): JSX.Element => {
             'Welcome back to Stock Race! You will be redirected to your home page in just a moment.'
         });
         const timer = setTimeout(() => {
+          setLoggedIn(true);
           navigate('/');
         }, 3000);
         return () => clearTimeout(timer);
-
-      }
-      else{
+        // const user = await res.json() TO DO: set user.
+      } else {
         setFormState({
           status: 'error',
           title: 'Error',
-          message: 'Incorrect Username or passowrd!'
+          message: 'Incorrect Username or password!'
         });
       }
-    }
-    catch(err){
+    } catch (err) {
       setFormState({
         status: 'error',
         title: 'Error',
         message: 'Something went wrong!'
       });
     }
-  }
+  };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -92,13 +95,14 @@ const Login = (): JSX.Element => {
       [name]: value
     });
   };
-  const handleTogglePassWord = () =>{
+  const handleTogglePassWord = () => {
     setValues({
       ...values,
       togglePassword: togglePassword === 'password' ? 'text' : 'password'
-    })
+    });
   };
-  const { username, password,togglePassword } = values;
+  const { username, password, togglePassword } = values;
+
   const { status, title, message } = formState;
 
   return (
@@ -119,7 +123,7 @@ const Login = (): JSX.Element => {
         <label>
           Password:
           <input
-            type = {togglePassword}
+            type={togglePassword}
             name="password"
             placeholder="123pass456"
             value={password}
@@ -129,17 +133,19 @@ const Login = (): JSX.Element => {
         </label>
         <label>
           Show Password:
-          <input 
-            type = "checkbox"
-            name = "togglePassword"
-            placeholder = "none"
-            onClick = {handleTogglePassWord}
+          <input
+            type="checkbox"
+            name="togglePassword"
+            placeholder="none"
+            onClick={handleTogglePassWord}
           />
         </label>
         <br />
         <button type="submit"> Login</button>
       </form>
-      {show && (<FormNotification status={status} message={message} title={title} />)}
+      {show && (
+        <FormNotification status={status} message={message} title={title} />
+      )}
     </div>
   );
 };
