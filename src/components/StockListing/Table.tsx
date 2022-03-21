@@ -1,27 +1,51 @@
 import React from 'react';
+import '../../index.css';
 
 import { Stock } from '../../pages/StockListing/StockListing';
-
+export type DisplayStock = {
+  currency: string;
+  description: string;
+  displaySymbol: string;
+  symbol: string;
+  type: string;
+};
+const StockHeadings = [
+  'currency',
+  'description',
+  'displaySymbol',
+  'symbol',
+  'type'
+];
 export default function Table(data: Stock[], howManyToDisplay: number) {
   const startAt: number = 0;
   return (
-    <table>
-      <tr>
-        {React.Children.toArray(
-          Object.keys(data[0]).map((key) => <th>{key}</th>)
-        )}
-      </tr>
-      {React.Children.toArray(
-        data
-          .slice(startAt, howManyToDisplay)
-          .map((item) => (
-            <tr>
-              {React.Children.toArray(
-                Object.values(item).map((value) => <td>{value}</td>)
-              )}
-            </tr>
-          ))
-      )}
-    </table>
+    <div className="container">
+      <table>
+        <thead>
+          <tr>
+            {StockHeadings.map((key) => (
+              <th key={key}>{key}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {React.Children.toArray(
+            data.slice(startAt, howManyToDisplay).map((item) => (
+              <tr>
+                {React.Children.toArray(
+                  <>
+                    <td>{item.currency}</td>
+                    <td>{item.description}</td>
+                    <td>{item.displaySymbol}</td>
+                    <td>{item.symbol}</td>
+                    <td>{item.type}</td>
+                  </>
+                )}
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }
