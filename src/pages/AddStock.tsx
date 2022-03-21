@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AddFavoriteStock = (): JSX.Element => {
+const AddStock = (): JSX.Element => {
   const [stockSymbol, setStockSymbol] = useState<string>('');
   const [stocks, setStocks] = useState<string[]>([]);
   const navigate = useNavigate();
@@ -33,4 +33,4 @@ const AddFavoriteStock = (): JSX.Element => {
   );
 };
 
-export default AddFavoriteStock;
+export default AddStock;
