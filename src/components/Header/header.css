@@ -29,9 +29,10 @@ h1 {
   display: block;
   max-width: 25%;
 }
-@media (min-width: 35rem) {
+@media (min-width: 35em) {
   .car {
     max-width: 20%;
+    max-height: 200px;
   }
   h1 {
     font-size: 1.8rem;
