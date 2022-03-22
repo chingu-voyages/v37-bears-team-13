@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormNotification from '../components/FormNotification';
+import { useAppCtx } from 'context';
 
 const Login = (): JSX.Element => {
   // type interface
@@ -24,6 +25,10 @@ const Login = (): JSX.Element => {
   const [values, setValues] = useState(initialValues);
   const [formState, setFormState] = useState(initialFormState);
   const [show, setShow] = useState(false);
+
+  // Get context.
+  const { setLoggedIn } = useAppCtx();
+
   // Navigate on sign up sucess
   const navigate = useNavigate();
   // show & reset form
@@ -54,6 +59,7 @@ const Login = (): JSX.Element => {
       });
 
       if (res.ok) {
+        // Set Form state.
         setFormState({
           status: 'success',
           title: 'Success!',
@@ -61,6 +67,7 @@ const Login = (): JSX.Element => {
             'Welcome back to Stock Race! You will be redirected to your home page in just a moment.'
         });
         const timer = setTimeout(() => {
+          setLoggedIn(true);
           navigate('/');
         }, 3000);
         return () => clearTimeout(timer);
@@ -94,7 +101,8 @@ const Login = (): JSX.Element => {
       togglePassword: togglePassword === 'password' ? 'text' : 'password'
     });
   };
-  const { username, password, togglePassword, incorrectPassword } = values;
+  const { username, password, togglePassword } = values;
+
   const { status, title, message } = formState;
 
   return (

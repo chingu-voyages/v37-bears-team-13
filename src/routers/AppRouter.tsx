@@ -6,26 +6,32 @@ import Login from '../pages/Login';
 import ProtectedRoute from 'pages/ProtectedRoute';
 import Signup from '../pages/Signup';
 import WrongRoutePage from '../pages/WrongRoutePage';
+import { useIsLoggedIn } from 'hooks';
+import { AppCtx } from 'context';
 
 const AppRouter = () => {
+  const { loggedIn, setLoggedIn } = useIsLoggedIn();
+
   return (
-    <HashRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="*" element={<WrongRoutePage />} />
-        <Route
-          path="/addStock"
-          element={
-            <ProtectedRoute user={'authorizedUser'}>
-              <AddStock />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </HashRouter>
+    <AppCtx.Provider value={{ loggedIn, setLoggedIn }}>
+      <HashRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<WrongRoutePage />} />
+          <Route
+            path="/addStock"
+            element={
+              <ProtectedRoute loggedIn={loggedIn}>
+                <AddStock />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </HashRouter>
+    </AppCtx.Provider>
   );
 };
 export default AppRouter;
