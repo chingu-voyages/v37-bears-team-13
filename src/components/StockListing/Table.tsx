@@ -12,7 +12,7 @@ export type DisplayStock = {
 const StockHeadings = [
   'currency',
   'description',
-  'displaySymbol',
+  'display symbol',
   'symbol',
   'type'
 ];
@@ -24,7 +24,7 @@ export default function Table(data: Stock[], howManyToDisplay: number) {
         <thead>
           <tr>
             {StockHeadings.map((key) => (
-              <th key={key}>{key}</th>
+              <th key={key}>{key.toUpperCase()}</th>
             ))}
           </tr>
         </thead>
