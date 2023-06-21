@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/v37-bears-team-13.github.io/v37-bears-team-13/static/css/main.e27049b4.css",
+    "main.js": "/v37-bears-team-13.github.io/v37-bears-team-13/static/js/main.60123b77.js",
+    "static/js/787.51912485.chunk.js": "/v37-bears-team-13.github.io/v37-bears-team-13/static/js/787.51912485.chunk.js",
+    "static/media/racing-car.svg": "/v37-bears-team-13.github.io/v37-bears-team-13/static/media/racing-car.700f4cc99678bf5c5da691f212acc25a.svg",
+    "index.html": "/v37-bears-team-13.github.io/v37-bears-team-13/index.html",
+    "main.e27049b4.css.map": "/v37-bears-team-13.github.io/v37-bears-team-13/static/css/main.e27049b4.css.map",
+    "main.60123b77.js.map": "/v37-bears-team-13.github.io/v37-bears-team-13/static/js/main.60123b77.js.map",
+    "787.51912485.chunk.js.map": "/v37-bears-team-13.github.io/v37-bears-team-13/static/js/787.51912485.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e27049b4.css",
+    "static/js/main.60123b77.js"
+  ]
+}
